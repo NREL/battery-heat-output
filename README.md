@@ -3,8 +3,9 @@ Leveraging the 'Battery Failure Databank' published by NREL and NASA, uses machi
 
 ## Repository structure
 - 'data' folder contains a copy of the battery failure databank (version 2)
-- 'src' folder contains classes and methods for data processing and model training
-- `main.py` trains models and saves resulting predictions and errors into json files.
+- 'src' folder contains classes and methods for data processing, model definitions and training, and analysis tools for plotting results
+- `main.py` trains models and saves resulting predictions and errors into json files
+- 'Plots.ipynb' creates plots of the data and results, as shown in the manuscript
 
 ## Installation
 Setup a virtual environment using conda with the 'environment.yml' file.
