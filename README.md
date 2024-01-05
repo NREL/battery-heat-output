@@ -18,4 +18,7 @@ The distributions of heat output from each cell type are predicted using a machi
 
 ## Authors
 Karina Masalkovaite, Paul Gasper, Donal Finegan
+
 National Renewable Energy Lab, Denver, CO, USA
+
+Contact: Paul.Gasper@nrel.gov, Donal.Finegan@nrel.gov
