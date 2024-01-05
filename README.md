@@ -1,4 +1,4 @@
-# Battery-Heat-Output-ML
+# battery-heat-output
 Leveraging the 'Battery Failure Databank' published by NREL and NASA, uses machine-learning to predict fractional heat output during thermal runaway from cell metadata and measured ejected and remaining cell mass after a thermal runaway event. Fractional heat output, i.e., heat output from the cell body, from ejecta released out of the positive tab, and from ejecta released out of the negative tab, was measured using a fractional thermal runaway calorimeter. Cell metadata and ejected/remaining cell mass can be measured using substantially cheaper methods, enabling cheaper and faster estimation of thermal runaway risk.
 
 ## Repository structure
