@@ -30,13 +30,11 @@ class FTRC_Data:
     def process_battery_failure_databank(self): 
         """
         Most common changes to data:
-            - only 100% State of Charge
             - adding columns for Total, Pos, Neg Mass Ejected 
             - append cell capacities for calorimetry dataframe from cell characteristics
             - normalizing ejected mass fractions (by cell mass) and heat ouputs (by cell charge capacity)
             - 
         """
-        self.df = self.df[self.df["Pre-Test-State-of-Charge-%"] == 100] 
         self.sum_ejected_masses()
         self.append_cell_capacity()
         self.normalize_ejected_mass_and_heat()

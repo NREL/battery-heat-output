@@ -11,6 +11,8 @@ from pathlib import Path
 if __name__ == "__main__":
     # Import battery failure data bank
     data = FTRC_Data()
+    # Remove all SOCs except 100%
+    data.df = data.df[data.df["Pre-Test-State-of-Charge-%"] == 100] 
 
     # Remove non-commercial cells, 'test' cells, and cells with less than 10 measurements from the data set
     cells_to_remove = [
