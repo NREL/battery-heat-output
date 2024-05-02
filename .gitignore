@@ -3,3 +3,4 @@
 *.pyc
 results/
 figures/
+PREFIX.out
