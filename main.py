@@ -134,66 +134,66 @@ if __name__ == "__main__":
     with open(Path("results/svm_chain_errors.json"), "w") as f:
         json.dump(errors, f)
 
-    # # SVM training loop
-    # print('SVM training (MultiOutput)')
-    # y_test_pred = {}
-    # errors = {}
+    # SVM training loop
+    print('SVM training (MultiOutput)')
+    y_test_pred = {}
+    errors = {}
     
-    # cell_types = list(data_trimmed['Cell-Description'].unique())    
-    # # cell_types = ['KULR 18650-K330'] ### if you want to test quickly for just one cell
-    # for cell_type in cell_types:
-    #     print(cell_type)
+    cell_types = list(data_trimmed['Cell-Description'].unique())    
+    # cell_types = ['KULR 18650-K330'] ### if you want to test quickly for just one cell
+    for cell_type in cell_types:
+        print(cell_type)
         
-    #     y_test_pred_cell = {}
-    #     errors_cell = {}
+        y_test_pred_cell = {}
+        errors_cell = {}
 
-    #     max_i = data_trimmed.value_counts('Cell-Description')[cell_type]
-    #     for iter in range(max_i): # range(max_i):
-    #         print(iter)
-    #         if iter == 0:
-    #             y_test_pred_iter, errors_iter, mass_ejected_test_iter = zero_shot_svm(data_trimmed, cell_type_test=cell_type, is_chain=False)
-    #         else:
-    #             y_test_pred_iter, errors_iter, mass_ejected_test_iter = i_shot_svm(data_trimmed, cell_type_test=cell_type, i=iter, max_sample_sets=300, is_chain=False)
+        max_i = data_trimmed.value_counts('Cell-Description')[cell_type]
+        for iter in range(max_i): # range(max_i):
+            print(iter)
+            if iter == 0:
+                y_test_pred_iter, errors_iter, mass_ejected_test_iter = zero_shot_svm(data_trimmed, cell_type_test=cell_type, is_chain=False)
+            else:
+                y_test_pred_iter, errors_iter, mass_ejected_test_iter = i_shot_svm(data_trimmed, cell_type_test=cell_type, i=iter, max_sample_sets=300, is_chain=False)
 
-    #         y_test_pred_cell[iter]       = y_test_pred_iter
-    #         errors_cell[iter]            = errors_iter
+            y_test_pred_cell[iter]       = y_test_pred_iter
+            errors_cell[iter]            = errors_iter
         
-    #     y_test_pred[cell_type]       = y_test_pred_cell
-    #     errors[cell_type]            = errors_cell
+        y_test_pred[cell_type]       = y_test_pred_cell
+        errors[cell_type]            = errors_cell
 
-    # with open(Path("results/svm_multioutput_y_test_pred.json"), "w") as f:
-    #     json.dump(y_test_pred, f)
-    # with open(Path("results/svm_multioutput_errors.json"), "w") as f:
-    #     json.dump(errors, f)
+    with open(Path("results/svm_multioutput_y_test_pred.json"), "w") as f:
+        json.dump(y_test_pred, f)
+    with open(Path("results/svm_multioutput_errors.json"), "w") as f:
+        json.dump(errors, f)
 
-    # # XGBoost training loop
-    # print('XGBoost training')
-    # y_test_pred = {}
-    # errors = {}
+    # XGBoost training loop
+    print('XGBoost training')
+    y_test_pred = {}
+    errors = {}
     
-    # cell_types = list(data_trimmed['Cell-Description'].unique())    
-    # # cell_types = ['KULR 18650-K330'] ### if you want to test quickly for just one cell
-    # for cell_type in cell_types:
-    #     print(cell_type)
+    cell_types = list(data_trimmed['Cell-Description'].unique())    
+    # cell_types = ['KULR 18650-K330'] ### if you want to test quickly for just one cell
+    for cell_type in cell_types:
+        print(cell_type)
         
-    #     y_test_pred_cell = {}
-    #     errors_cell = {}
+        y_test_pred_cell = {}
+        errors_cell = {}
 
-    #     max_i = data_trimmed.value_counts('Cell-Description')[cell_type]
-    #     for iter in range(max_i): # range(max_i):
-    #         print(iter)
-    #         if iter == 0:
-    #             y_test_pred_iter, errors_iter, mass_ejected_test_iter = zero_shot_xgb(data_trimmed, cell_type_test=cell_type)
-    #         else:
-    #             y_test_pred_iter, errors_iter, mass_ejected_test_iter = i_shot_xgb(data_trimmed, cell_type_test=cell_type, i=iter, max_sample_sets=300)
+        max_i = data_trimmed.value_counts('Cell-Description')[cell_type]
+        for iter in range(max_i): # range(max_i):
+            print(iter)
+            if iter == 0:
+                y_test_pred_iter, errors_iter, mass_ejected_test_iter = zero_shot_xgb(data_trimmed, cell_type_test=cell_type)
+            else:
+                y_test_pred_iter, errors_iter, mass_ejected_test_iter = i_shot_xgb(data_trimmed, cell_type_test=cell_type, i=iter, max_sample_sets=300)
 
-    #         y_test_pred_cell[iter]       = y_test_pred_iter
-    #         errors_cell[iter]            = errors_iter
+            y_test_pred_cell[iter]       = y_test_pred_iter
+            errors_cell[iter]            = errors_iter
         
-    #     y_test_pred[cell_type]       = y_test_pred_cell
-    #     errors[cell_type]            = errors_cell
+        y_test_pred[cell_type]       = y_test_pred_cell
+        errors[cell_type]            = errors_cell
 
-    # with open(Path("results/xgb_y_test_pred.json"), "w") as f:
-    #     json.dump(y_test_pred, f)
-    # with open(Path("results/xgb_errors.json"), "w") as f:
-    #     json.dump(errors, f)
+    with open(Path("results/xgb_y_test_pred.json"), "w") as f:
+        json.dump(y_test_pred, f)
+    with open(Path("results/xgb_errors.json"), "w") as f:
+        json.dump(errors, f)
