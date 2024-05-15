@@ -34,6 +34,23 @@ def read_errors_json(d):
             data_all = pd.concat((data_all, data_cell)).reset_index(drop=True)
     return data_all
 
+def read_errors_soc(d):
+    data_all = pd.DataFrame()
+    for i_cell, items in enumerate(d.items()):
+        cell, entries_0 = items[0], items[1]
+        for SOC, entries_1 in entries_0.items():
+            err = pd.DataFrame(entries_1)
+            err = err.unstack().to_frame().sort_index(level=1).T
+            err.columns = err.columns.map('_'.join)
+            data_i = err
+            data_i.loc[:, "SOC"] = int(SOC)
+            data_cell = data_i
+            
+            data_cell.loc[:, "Cell-Description"] = cell
+            data_all = pd.concat((data_all, data_cell)).reset_index(drop=True)
+        
+    return data_all
+
 def read_predictions_json(d):
     targets = [
         'Total Heat Output [kJ/A*h]',
@@ -66,6 +83,28 @@ def read_predictions_json(d):
         else:
             data_all = pd.concat((data_all, data_cell)).reset_index(drop=True)
         data_all.loc[:, "Distribution"] = "Predicted"
+    return data_all
+
+def read_predictions_soc(d):
+    data_all = pd.DataFrame()
+    targets = [
+        'Total Heat Output [kJ/A*h]',
+        'Cell Body Heat Output [kJ/A*h]',
+        'Positive Heat Output [kJ/A*h]',
+        'Negative Heat Output [kJ/A*h]',
+    ]
+    for i_cell, items in enumerate(d.items()):
+        cell, entries_0 = items[0], items[1]
+#         print(cell, '+++++++++++++++++++++++')
+        for SOC, entries_1 in entries_0.items():
+            data_i = pd.DataFrame(np.array(entries_1), columns=targets)
+            data_i.loc[:, "SOC"] = int(SOC)
+            data_cell = data_i
+            
+            data_cell.loc[:, "Cell-Description"] = cell
+            data_all = pd.concat((data_all, data_cell)).reset_index(drop=True)
+            data_all.loc[:, "Distribution"] = "Predicted"
+
     return data_all
 
 def plot_errors(errors, axes=None, linestyle='-', color='k', groupfunc='median', metric="rmse", label=None, y_upperlim=None):
