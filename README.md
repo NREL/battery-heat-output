@@ -6,6 +6,7 @@ Leveraging the '[Battery Failure Databank](https://www.nrel.gov/transportation/b
 - 'src' folder contains classes and methods for data processing, model definitions and training, and analysis tools for plotting results
 - `main.py` trains models and saves resulting predictions and errors into json files
 - 'Plots.ipynb' creates plots of the data and results, as shown in the manuscript
+Other Jupyter notebooks contain testing on other cell types in the databank, SHAP feature analysis, and testing/training of models on data with varied SOC before triggering thermal runaway.
 
 ## Installation
 Setup a virtual environment using conda with the 'environment.yml' file.
