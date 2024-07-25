@@ -3,5 +3,3 @@
 *.pyc
 results/
 figures/
-PREFIX.out
-*.zip
