@@ -1,5 +1,5 @@
 # battery-heat-output
-Leveraging the 'Battery Failure Databank' published by NREL and NASA, uses machine-learning to predict fractional heat output during thermal runaway from cell metadata and measured ejected and remaining cell mass after a thermal runaway event. Fractional heat output, i.e., heat output from the cell body, from ejecta released out of the positive tab, and from ejecta released out of the negative tab, was measured using a fractional thermal runaway calorimeter. Cell metadata and ejected/remaining cell mass can be measured using substantially cheaper methods, enabling cheaper and faster estimation of thermal runaway risk.
+Leveraging the '[Battery Failure Databank](https://www.nrel.gov/transportation/battery-failure.html)' published by NREL and NASA, uses machine-learning to predict fractional heat output during thermal runaway from cell metadata and measured ejected and remaining cell mass after a thermal runaway event. Fractional heat output, i.e., heat output from the cell body, from ejecta released out of the positive tab, and from ejecta released out of the negative tab, was measured using a fractional thermal runaway calorimeter. Cell metadata and ejected/remaining cell mass can be measured using substantially cheaper methods, enabling cheaper and faster estimation of thermal runaway risk.
 
 ## Repository structure
 - 'data' folder contains a copy of the battery failure databank (version 2)
@@ -11,7 +11,7 @@ Leveraging the 'Battery Failure Databank' published by NREL and NASA, uses machi
 Setup a virtual environment using conda with the 'environment.yml' file.
 
 ## Battery Failure Databank 
-For this work, 139 measurements from the Battery Failure Databank are utilized, predicting heat output from ejected mass data. Overall, these two measurements are storngly correlated, however there is substantial variability in the behavior observed across different cell types, for example, the KULR 18650-K330 cells show a clear relationship, while the LG 18650-MJ1 cells have no correlation between heat ouput and ejected mass.
+For this work, 139 measurements from the [Battery Failure Databank](https://www.nrel.gov/transportation/battery-failure.html) are utilized, predicting heat output from ejected mass data. Overall, these two measurements are storngly correlated, however there is substantial variability in the behavior observed across different cell types, for example, the KULR 18650-K330 cells show a clear relationship, while the LG 18650-MJ1 cells have no correlation between heat ouput and ejected mass.
 
 <img src="imgs/fig_data_linreg.jpg" alt="battery_databank" width="50%" height="auto">
 
