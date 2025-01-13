@@ -43,7 +43,9 @@ class FTRC_Data:
 
         # Logical feature denoting if the bottom vent was actuated during thermal runaway
         self.df.loc[:, 'BV Actuated'] = True
-        self.df.loc[(self.df['Cell-Failure-Mechanism']=='Top Vent') | (self.df['Cell-Failure-Mechanism']=='Top Vent Only - Bottom Vent Not Actuated'), 'BV Actuated'] = False
+        mask_no_BV_actuation = (self.df['Cell-Failure-Mechanism']=='Top Vent') | (self.df['Cell-Failure-Mechanism']=='Top Vent Only - Bottom Vent Not Actuated') 
+        mask_no_BV_actuation = mask_no_BV_actuation | (self.df['Cell-Failure-Mechanism']=='No ejection')
+        self.df.loc[mask_no_BV_actuation, 'BV Actuated'] = False
         
     def sum_ejected_masses(self):
         df = self.df.copy()
